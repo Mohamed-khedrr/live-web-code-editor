@@ -17,12 +17,9 @@ const JS_STORAGE = 'js_storage';
 
 
 function showPreview() {
-    var htmlCode = document.getElementById("htmlCode").value;
-    var cssCode = "" + document.getElementById("cssCode").value + "";
-    var jsCode = "" + document.getElementById("jsCode").value + "";
-    var frame = document.getElementById("preview-window").contentWindow.document;
+    let frame = document.getElementById("preview-window").contentWindow.document;
     frame.open();
-    frame.write(htmlCode + cssCode + jsCode);
+    frame.write(htmlCode.value + cssCode.value + jsCode.value);
     frame.close();
 }
 
@@ -35,16 +32,20 @@ function show(x) {
 }
 
 function show_all() {
+    const htmWindow = document.getElementById("html")
+    const cssWindow = document.getElementById("css");
+    const jsWindow = document.getElementById("js")
+    const resultWindow = document.getElementById("result");
     if (window.innerWidth >= 992) {
-        document.getElementById("html").style.display = "block";
-        document.getElementById("css").style.display = "block";
-        document.getElementById("js").style.display = "block";
-        document.getElementById("result").style.display = "block";
+        htmWindow.style.display = "block";
+        cssWindow.style.display = "block";
+        jsWindow.style.display = "block";
+        resultWindow.style.display = "block";
     }
-    if (window.innerWidth < 992 && document.getElementById("html").style.display == "block") {
-        document.getElementById("css").style.display = "none";
-        document.getElementById("js").style.display = "none";
-        document.getElementById("result").style.display = "none";
+    if (window.innerWidth < 992 && htmWindow.style.display == "block") {
+        cssWindow.style.display = "none";
+        jsWindow.style.display = "none";
+        resultWindow.style.display = "none";
     }
 }
 
